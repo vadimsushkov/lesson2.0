@@ -1,6 +1,6 @@
-const { Router } =  require('express');
-const UserComponent =  require('../User');
-const exceptionsFilter = require('tmpfile.js');
+const { Router } = require('express');
+const UserComponent = require('../User');
+const exceptionsFilter = require('./tmpfile');
 
 /**
  * Express router to mount user related functions on.
@@ -17,7 +17,7 @@ const router = Router();
  * @param {string} path - Express path
  * @param {callback} middleware - Express middleware.
  */
-router.get('/',  exceptionsFilter(UserComponent.findAll));
+router.get('/', exceptionsFilter(UserComponent.findAll));
 
 /**
  * Route serving a user
@@ -27,7 +27,7 @@ router.get('/',  exceptionsFilter(UserComponent.findAll));
  * @param {string} path - Express path
  * @param {callback} middleware - Express middleware.
  */
-router.get('/:id',  exceptionsFilter(UserComponent.findById));
+router.get('/:id', exceptionsFilter(UserComponent.findById));
 
 /**
  * Route serving a new user
@@ -37,7 +37,7 @@ router.get('/:id',  exceptionsFilter(UserComponent.findById));
  * @param {string} path - Express path
  * @param {callback} middleware - Express middleware
  */
-router.post('/',  exceptionsFilter(UserComponent.create));
+router.post('/', exceptionsFilter(UserComponent.create));
 
 /**
  * Route serving a new user

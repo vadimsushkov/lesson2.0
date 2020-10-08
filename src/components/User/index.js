@@ -1,4 +1,5 @@
 const UserService = require('./service');
+const UserValidation = require('./validation');
 
 /**
  * @function
@@ -8,13 +9,13 @@ const UserService = require('./service');
  * @returns {Promise < void >}
  */
 async function findAll(req, res, next) {
-        const users = await UserService.findAll();
+    const users = await UserService.findAll();
 
-        res.status(200).json({
-            message: 'Users',
-            data: users,
-            statusCode: 200
-        });
+    res.status(200).json({
+        message: 'Users',
+        data: users,
+        statusCode: 200,
+    });
 }
 
 /**
@@ -25,19 +26,14 @@ async function findAll(req, res, next) {
  * @returns {Promise < void >}
  */
 async function findById(req, res, next) {
-        const { error } = UserValidation.findById(req.params);
+    const { error } = UserValidation.findById(req.params);
+    const user = await UserService.findById(req.params.id);
 
-        if (error) {
-            throw new ValidationError(error.details);
-        }
-
-        const user = await UserService.findById(req.params.id);
-
-        res.status(200).json({
-            message: 'User successfully was found',
-            data: user,
-            statusCode: 200
-        });
+    res.status(200).json({
+        message: 'User successfully was found',
+        data: user,
+        statusCode: 200,
+    });
 }
 
 /**
@@ -48,19 +44,14 @@ async function findById(req, res, next) {
  * @returns {Promise < void >}
  */
 async function create(req, res, next) {
-        const { error } = UserValidation.create(req.body);
+    const { error } = UserValidation.create(req.body);
+    const user = await UserService.create(req.body);
 
-        if (error) {
-            throw new ValidationError(error.details);
-        }
-
-        const user = await UserService.create(req.body);
-
-        return res.status(200).json({
-            message: 'User was successfully created',
-            data: user,
-            statusCode: 200
-        });
+    return res.status(200).json({
+        message: 'User was successfully created',
+        data: user,
+        statusCode: 200,
+    });
 }
 
 /**
@@ -71,21 +62,16 @@ async function create(req, res, next) {
  * @returns {Promise<void>}
  */
 async function updateById(req, res, next) {
-        const { error } = UserValidation.updateById(req.body);
+    const { error } = UserValidation.updateById(req.body);
+    const updatedUser = await UserService.updateById(req.body.id, {
+        email: req.body.email,
+    });
 
-        if (error) {
-            throw new ValidationError(error.details);
-        }
-
-        const updatedUser = await UserService.updateById(req.body.id, {
-            fullName: req.body.fullName
-        });
-
-        return res.status(200).json({
-            message: 'User was successfully updated',
-            data: updatedUser,
-            statusCode: 200
-        });
+    return res.status(200).json({
+        message: 'User was successfully updated',
+        data: updatedUser,
+        statusCode: 200,
+    });
 }
 
 /**
@@ -96,19 +82,14 @@ async function updateById(req, res, next) {
  * @returns {Promise<void>}
  */
 async function deleteById(req, res, next) {
-        const { error } = UserValidation.deleteById(req.body);
+    const { error } = UserValidation.deleteById(req.body);
+    const deletedUser = await UserService.deleteById(req.body.id);
 
-        if (error) {
-            throw new ValidationError(error.details);
-        }
-
-        const deletedUser = await UserService.deleteById(req.body.id);
-
-        return res.status(200).json({
-            message: 'User was successfully deleted',
-            data: deletedUser,
-            statusCode: 200
-        });
+    return res.status(200).json({
+        message: 'User was successfully deleted',
+        data: deletedUser,
+        statusCode: 200,
+    });
 }
 
 module.exports = {
@@ -116,5 +97,5 @@ module.exports = {
     findById,
     create,
     updateById,
-    deleteById
-}
+    deleteById,
+};

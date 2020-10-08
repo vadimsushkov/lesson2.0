@@ -1,6 +1,6 @@
 
- export function exceptionsFilter(targetMethod) {
-    return async (req, res, next) => {
+ module.exports = function exceptionsFilter(targetMethod) {
+    return async function (req, res, next) {
         try {
             await targetMethod(req, res, next);
         } catch (error) {
