@@ -16,7 +16,7 @@ module.exports = {
     /**
      * @exports
      * @method findById
-     * @param {string} id 
+     * @param {string} id
      * @summary get user by user
      * @returns Promise<UserModel[]>
      */
@@ -32,7 +32,7 @@ module.exports = {
     * @returns {Promise<UserModel>}
     */
     async create(profile) {
-    return await UserModel.create(profile);
+        return await UserModel.create(profile);
     },
 
     /**
@@ -48,8 +48,8 @@ module.exports = {
         return await UserModel.updateOne(
             { _id: Types.ObjectId(id) },
             {
-                $set: newProfile
-            }
+                $set: newProfile,
+            },
         ).exec();
     },
 
@@ -61,7 +61,6 @@ module.exports = {
     * @returns {Promise<void>}
     */
     async deleteById(id) {
-    return await UserModel.deleteOne({ _id: Types.ObjectId(id) }).exec();
-    }
-    };
-
+        return await UserModel.deleteOne({ _id: Types.ObjectId(id) }).exec();
+    },
+};

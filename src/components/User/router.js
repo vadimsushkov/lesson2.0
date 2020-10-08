@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const UserComponent = require('../User');
-const exceptionsFilter = require('./tmpfile');
+const exceptionsFilter = require('./filter');
 
 /**
  * Express router to mount user related functions on.

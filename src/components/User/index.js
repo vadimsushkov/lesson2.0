@@ -26,8 +26,11 @@ async function findAll(req, res, next) {
  * @returns {Promise < void >}
  */
 async function findById(req, res, next) {
-    const { error } = UserValidation.findById(req.params);
-    const user = await UserService.findById(req.params.id);
+    const { value, error } = UserValidation.findById(req.params);
+    if (error) {
+        throw error;
+    }
+    const user = await UserService.findById(value.id);
 
     res.status(200).json({
         message: 'User successfully was found',
@@ -44,8 +47,11 @@ async function findById(req, res, next) {
  * @returns {Promise < void >}
  */
 async function create(req, res, next) {
-    const { error } = UserValidation.create(req.body);
-    const user = await UserService.create(req.body);
+    const { value, error } = UserValidation.create(req.params);
+    if (error) {
+        throw error;
+    }
+    const user = await UserService.create(value);
 
     return res.status(200).json({
         message: 'User was successfully created',
@@ -62,9 +68,12 @@ async function create(req, res, next) {
  * @returns {Promise<void>}
  */
 async function updateById(req, res, next) {
-    const { error } = UserValidation.updateById(req.body);
-    const updatedUser = await UserService.updateById(req.body.id, {
-        email: req.body.email,
+    const { value, error } = UserValidation.updateById(req.body);
+    if (error) {
+        throw error;
+    }
+    const updatedUser = await UserService.updateById(value.id, {
+        email: value.email,
     });
 
     return res.status(200).json({
@@ -82,8 +91,11 @@ async function updateById(req, res, next) {
  * @returns {Promise<void>}
  */
 async function deleteById(req, res, next) {
-    const { error } = UserValidation.deleteById(req.body);
-    const deletedUser = await UserService.deleteById(req.body.id);
+    const { value, error } = UserValidation.deleteById(req.body);
+    if (error) {
+        throw error;
+    }
+    const deletedUser = await UserService.deleteById(value.id);
 
     return res.status(200).json({
         message: 'User was successfully deleted',

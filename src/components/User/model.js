@@ -4,11 +4,11 @@ const connections = require('../../config/connection');
 const UserSchema = new Schema({
     email: {
         type: String,
-        trim: true
-    }
+        trim: true,
+    },
 }, {
     collection: 'usermodel',
-    versionKey: false
+    versionKey: false,
 });
 
 module.exports = connections.model('UserModel', UserSchema);
