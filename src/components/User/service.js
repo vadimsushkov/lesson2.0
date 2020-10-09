@@ -1,4 +1,5 @@
 const UserModel = require('./model');
+const { Types } = require('mongoose');
 
 module.exports = {
     /**
@@ -21,7 +22,9 @@ module.exports = {
      * @returns Promise<UserModel[]>
      */
     async findById(id) {
-        return await UserModel.findOne({ id });
+        const foundUser = await UserModel.findOne({ id: Types.ObjectId(id) });
+
+        return foundUser || null;
     },
 
     /**

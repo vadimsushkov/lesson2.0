@@ -27,11 +27,19 @@ async function findAll(req, res, next) {
  */
 async function findById(req, res, next) {
     const { value, error } = UserValidation.findById(req.params);
+
     if (error) {
         throw error;
     }
+
     const user = await UserService.findById(value.id);
 
+    if (!user) {
+        return res.status(404).json({
+            message: 'User is not found',
+            statusCode: 404,
+        });
+    }
     res.status(200).json({
         message: 'User successfully was found',
         data: user,
@@ -76,6 +84,13 @@ async function updateById(req, res, next) {
         email: value.email,
     });
 
+    if (!updatedUser) {
+        return res.status(404).json({
+            message: 'User is not found',
+            statusCode: 404,
+        });
+    }
+
     return res.status(200).json({
         message: 'User was successfully updated',
         data: updatedUser,
@@ -96,6 +111,13 @@ async function deleteById(req, res, next) {
         throw error;
     }
     const deletedUser = await UserService.deleteById(value.id);
+
+    if (!deletedUser) {
+        return res.status(404).json({
+            message: 'User is not found',
+            statusCode: 404,
+        });
+    }
 
     return res.status(200).json({
         message: 'User was successfully deleted',

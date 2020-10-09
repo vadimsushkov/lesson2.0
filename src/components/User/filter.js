@@ -5,6 +5,7 @@ module.exports = function exceptionsFilter(targetMethod) {
         try {
             await targetMethod(req, res, next);
         } catch (error) {
+            console.error(error);
             if (error instanceof ValidationError) {
                 return res.status(422).json({
                     message: error.name,

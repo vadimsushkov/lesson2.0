@@ -1,28 +1,25 @@
 const Joi = require('@hapi/joi');
+const Validation = require('../validation');
 
-class JoiValidate {
-    static findById(params) {
-        const schema = Joi.object({
-            id: Joi.string()
-                .min(12)
-                .required(),
-        });
-        return schema.validate(params);
+class UsersValidation extends Validation {
+    findById(params) {
+        return this.customJoi.object({
+            id: this.customJoi.objectId().required(),
+        }).validate(params);
     }
 
-    static create(params) {
-        const schema = Joi.object({
+    create(params) {
+        return Joi.object({
             email: Joi.string()
                 .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
                 .min(3)
                 .max(30)
                 .required(),
-        });
-        return schema.validate(params);
+        }).validate(params);
     }
 
-    static updateById(params) {
-        const schema = Joi.object({
+    updateById(params) {
+        return Joi.object({
             id: Joi.string()
                 .min(12)
                 .required(),
@@ -31,11 +28,10 @@ class JoiValidate {
                 .min(3)
                 .max(30)
                 .required(),
-        });
-        return schema.validate(params);
+        }).validate(params);
     }
 
-    static deleteById(params) {
+    deleteById(params) {
         const schema = Joi.object({
             id: Joi.string()
                 .min(12)
@@ -45,4 +41,4 @@ class JoiValidate {
     }
 }
 
-module.exports = JoiValidate;
+module.exports = new UsersValidation();
