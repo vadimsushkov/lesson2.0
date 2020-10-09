@@ -8,6 +8,12 @@ class UsersValidation extends Validation {
         }).validate(params);
     }
 
+    findByEmail(params) {
+        return this.customJoi.object({
+            email: this.customJoi.string().email().required(),
+        }).validate(params);
+    }
+
     create(params) {
         return Joi.object({
             email: Joi.string()

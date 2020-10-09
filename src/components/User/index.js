@@ -25,6 +25,7 @@ async function findAll(req, res, next) {
  * @param {express.NextFunction} next
  * @returns {Promise < void >}
  */
+
 async function findById(req, res, next) {
     const { value, error } = UserValidation.findById(req.params);
 
@@ -126,10 +127,36 @@ async function deleteById(req, res, next) {
     });
 }
 
+async function authentication(req, res, next) {
+    const { value, error } = UserValidation.findByEmail(req.params);
+
+    if (error) {
+        throw error;
+    }
+
+    const user = await UserService.findByEmail(value);
+
+    if (!user) {
+        return res.status(404).json({
+            message: 'Not found',
+            details: null,
+        });
+    }
+
+    const tokens = await UserService.generateTokens();
+
+    return res.status(200).json({
+        message: 'User is authenticated',
+        data: tokens,
+        statusCode: 200,
+    });
+}
+
 module.exports = {
     findAll,
     findById,
     create,
     updateById,
     deleteById,
+    authentication,
 };
