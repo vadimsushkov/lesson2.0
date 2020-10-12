@@ -20,16 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6101249e-7591-4a04-85d3-547816033850" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/config/redisConnection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/polices/is-logged.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Auth/filter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Auth/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Auth/router.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Auth/service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Auth/validation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/User/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/User/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/User/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/User/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/validation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/redisConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/redisConnection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/router.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +73,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
@@ -81,6 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1602141385155</updated>
       <workItem from="1602141386662" duration="89634000" />
+      <workItem from="1602482316162" duration="28656000" />
     </task>
     <servers />
   </component>
@@ -97,8 +103,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="711" y="355" width="559" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602484271015">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="711" y="355" width="559" height="403" key="#com.intellij.fileTypes.FileTypeChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1602484271015" />
+    <state x="729" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602505811558">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="729" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1602505811558" />
     <state x="779" y="300" width="424" height="520" key="FileChooserDialogImpl" timestamp="1602141455619">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>

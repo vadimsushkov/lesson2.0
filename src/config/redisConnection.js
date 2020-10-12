@@ -4,7 +4,7 @@ const bluebird = require('bluebird');
 
 bluebird.promisifyAll(redis);
 
-const redisClient = redis.createClient(`redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`);
+const redisClient = redis.createClient('redis://127.0.0.1:6379');
 
 // if has occured an error then show her in the console as an error
 redisClient.on('error', console.error);

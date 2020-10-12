@@ -38,12 +38,11 @@ class UsersValidation extends Validation {
     }
 
     deleteById(params) {
-        const schema = Joi.object({
+        return Joi.object({
             id: Joi.string()
                 .min(12)
                 .required(),
-        });
-        return schema.validate(params);
+        }).validate(params);
     }
 }
 

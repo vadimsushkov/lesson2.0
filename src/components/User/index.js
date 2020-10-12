@@ -11,7 +11,7 @@ const UserValidation = require('./validation');
 async function findAll(req, res, next) {
     const users = await UserService.findAll();
 
-    res.status(200).json({
+    return res.status(200).json({
         message: 'Users',
         data: users,
         statusCode: 200,
@@ -34,14 +34,15 @@ async function findById(req, res, next) {
     }
 
     const user = await UserService.findById(value.id);
-
+    console.log(value.id);
+    console.log(user);
     if (!user) {
         return res.status(404).json({
             message: 'User is not found',
             statusCode: 404,
         });
     }
-    res.status(200).json({
+    return res.status(200).json({
         message: 'User successfully was found',
         data: user,
         statusCode: 200,
@@ -127,36 +128,10 @@ async function deleteById(req, res, next) {
     });
 }
 
-async function authentication(req, res, next) {
-    const { value, error } = UserValidation.findByEmail(req.params);
-
-    if (error) {
-        throw error;
-    }
-
-    const user = await UserService.findByEmail(value);
-
-    if (!user) {
-        return res.status(404).json({
-            message: 'Not found',
-            details: null,
-        });
-    }
-
-    const tokens = await UserService.generateTokens();
-
-    return res.status(200).json({
-        message: 'User is authenticated',
-        data: tokens,
-        statusCode: 200,
-    });
-}
-
 module.exports = {
     findAll,
     findById,
     create,
     updateById,
     deleteById,
-    authentication,
 };

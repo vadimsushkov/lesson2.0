@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const UserModel = require('./model');
 const { Types } = require('mongoose');
 const jwt = require('jsonwebtoken');
@@ -37,7 +39,9 @@ module.exports = {
     * @returns {Promise<UserModel>}
     */
     async create(profile) {
-        return await UserModel.create(profile);
+        const newUser = await UserModel.create(profile);
+
+        return newUser || null;
     },
 
     /**
@@ -50,12 +54,13 @@ module.exports = {
     * @returns {Promise<void>}
     */
     async updateById(id, newProfile) {
-        return await UserModel.updateOne(
+        const updatedUser = await UserModel.updateOne(
             { _id: Types.ObjectId(id) },
             {
                 $set: newProfile,
             },
         ).exec();
+        return updatedUser || null;
     },
 
     /**
@@ -66,7 +71,9 @@ module.exports = {
     * @returns {Promise<void>}
     */
     async deleteById(id) {
-        return await UserModel.deleteOne({ _id: Types.ObjectId(id) }).exec();
+        const foundUser = await UserModel.deleteOne({ _id: Types.ObjectId(id) }).exec();
+
+        return foundUser || null;
     },
 
     async findByEmail(email) {
@@ -76,8 +83,8 @@ module.exports = {
     },
 
     async generateTokens(payload) {
-        const accessToken = jwt.sign(payload, accessTokenSecret, { expiresIn: '1m' });
-        const refreshToken = jwt.sign(payload, process.env.YOUR_VARIABLE, { expiresIn: '7d' });
+        const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1m' });
+        const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
 
         await redisClient.set(refreshToken, payload.id, 'EX', 86400);
 
