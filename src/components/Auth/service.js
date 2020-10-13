@@ -42,11 +42,6 @@ module.exports = {
 
         await method(payload.id, refreshToken);
 
-        return res.status(200).json({
-            data: {
-                accessToken,
-                refreshToken,
-            },
-        });
+        return { accessToken, refreshToken };
     },
 };

@@ -20,20 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6101249e-7591-4a04-85d3-547816033850" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/filter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/router.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/validation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/User/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/User/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/User/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/User/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/validation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/redisConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/redisConnection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/filter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/validation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/polices/is-logged.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/polices/is-logged.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +80,12 @@
       <option name="presentableId" value="Default" />
       <updated>1602141385155</updated>
       <workItem from="1602141386662" duration="89634000" />
-      <workItem from="1602482316162" duration="28656000" />
+      <workItem from="1602482316162" duration="29690000" />
+      <workItem from="1602575721199" duration="5536000" />
+      <workItem from="1602581683571" duration="3276000" />
+      <workItem from="1602585217536" duration="2671000" />
+      <workItem from="1602588135591" duration="9587000" />
+      <workItem from="1602604687250" duration="304000" />
     </task>
     <servers />
   </component>
@@ -122,6 +121,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="485" y="188" width="1022" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1602141460799" />
+    <state x="687" y="162" width="618" height="783" key="find.popup" timestamp="1602576098861">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="687" y="162" width="618" height="783" key="find.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1602576098861" />
     <state x="660" y="252" key="run.anything.popup" timestamp="1602141894356">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>

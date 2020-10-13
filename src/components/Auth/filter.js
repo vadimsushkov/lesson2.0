@@ -14,7 +14,7 @@ module.exports = function exceptionsFilter(targetMethod) {
                 });
             }
 
-            res.status(500).json({
+            return res.status(500).json({
                 message: error.message,
                 details: null,
                 statusCode: 500,

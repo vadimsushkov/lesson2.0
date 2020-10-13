@@ -3,23 +3,25 @@ const AuthService = require('./service');
 const AuthValidation = require('./validation');
 
 async function signIn(req, res, next) {
-    const { value, error } = AuthValidation.signIn(req.params);
+    const { value, error } = AuthValidation.signIn(req.body);
+    console.error(req.body);
 
     if (error) throw error;
 
     const user = await AuthService.findUserByEmail(value.email);
+    console.error(user);
 
-    if (!user) return res.sendStatus(204);
+    if (!user) return res.status(404).json({ message: 'User is not found', statusCode: 404 });
 
-    return AuthService.generateTokens(user, AuthService.relationIdToRefreshToken);
+    return res.status(200).json({ message: 'You are signed in', data: AuthService.generateTokens(user, AuthService.relationIdToRefreshToken) });
 }
 
 async function refresh(req, res, next) {
-    const { error } = AuthValidation.token(req.params);
+    const { value, error } = AuthValidation.token(req.body);
 
     if (error) throw error;
 
-    return jwt.verify(req.body.refreshToken, process.env.REFRESH_TOKEN_SECRET,
+    return jwt.verify(value.refreshToken, process.env.REFRESH_TOKEN_SECRET,
         async (err, payload) => {
             if (err) return res.sendStatus(403);
 
@@ -27,12 +29,13 @@ async function refresh(req, res, next) {
 
             if (!oldRefreshToken) return res.status(400).json({ message: 'RefreshToken has been expired' });
 
-            return AuthService.generateTokens(payload, AuthService.updateExistingUserRefreshToken);
+            return res.status(200).json(AuthService.generateTokens(payload,
+                AuthService.updateExistingUserRefreshToken));
         });
 }
 
 async function signOut(req, res, next) {
-    const { value, error } = AuthValidation.signOut(req.params);
+    const { value, error } = AuthValidation.signOut(req.body);
 
     if (error) throw error;
 
@@ -56,7 +59,7 @@ async function signUp(req, res, next) {
 async function signOutAll(req, res, next) {
     await AuthService.deleteAllRefreshTokens();
 
-    return res.status(200).json({ message: 'All users have been signed out', data: null });
+    return res.status(200).json({ message: 'All users have been signed out' });
 }
 
 module.exports = {

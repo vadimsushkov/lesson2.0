@@ -1,28 +1,19 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
+    const authToken = req.header('Authorization');
+    const token = authToken && authToken.split(' ');
+    console.log(token);
+
+    if (!token) return res.status(401).json('Access Denied');
+
     try {
-        const token = req.headers.authorization.split(' ')[1];
+        const verified = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
-        if (!token) {
-            return res.status(422).json({
-                message: 'Unauthorized',
-                details: {},
-            });
-        }
+        req.user = verified;
 
-        return jwt.verify(token, (error, data) => {
-            if (error) {
-                throw error;
-            }
-
-            return data;
-        });
+        return next();
     } catch (error) {
-        res.status(422).json({
-            message: 'Unauthorized',
-            details: {},
-        });
-        return next(error);
+        return res.status(403).json('token is expired');
     }
 };
