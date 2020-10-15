@@ -8,6 +8,15 @@ const UserValidation = require('./validation');
  * @param {express.NextFunction} next
  * @returns {Promise < void >}
  */
+
+/**
+ * @swagger
+ * /findAll:
+ *  get:
+ *      responses:
+ *          '200':
+ *              description: fuck
+ */
 async function findAll(req, res, next) {
     const users = await UserService.findAll();
 

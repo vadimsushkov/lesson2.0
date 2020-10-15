@@ -7,11 +7,11 @@ const router = Router();
 
 router.post('/signUp', exceptionsFilter(AuthComponent.signUp));
 
-router.post('/signIn', [isLogged], exceptionsFilter(AuthComponent.signIn));
+router.post('/signIn', exceptionsFilter(AuthComponent.signIn));
 
-router.post('/refreshToken', [isLogged], exceptionsFilter(AuthComponent.refresh));
+router.post('/refreshToken', exceptionsFilter(AuthComponent.refresh));
 
-router.delete('/signOut', [isLogged], exceptionsFilter(AuthComponent.signOut));
+router.delete('/signOut', exceptionsFilter(AuthComponent.signOut));
 
 router.delete('/signOutAll', AuthComponent.signOutAll);
 

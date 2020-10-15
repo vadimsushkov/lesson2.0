@@ -41,6 +41,7 @@ module.exports = {
         const refreshToken = jwt.sign(newPayload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
 
         await method(payload.id, refreshToken);
+        console.log({ accessToken, refreshToken });
 
         return { accessToken, refreshToken };
     },
