@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const UserComponent = require('../User');
 const exceptionsFilter = require('./filter');
+const isLogged = require('../../polices/is-logged');
 
 const router = Router();
 
@@ -12,7 +13,32 @@ const router = Router();
  * @param {string} path - Express path
  * @param {callback} middleware - Express middleware.
  */
-router.get('/', exceptionsFilter(UserComponent.findAll));
+
+/**
+ * GET method route
+ * @example http://localhost:PORT/v1/users
+ *
+ * @swagger
+ * /v1/users:
+ *   get:
+ *     description: Get all stored users in Database
+ *     tags: ["users"]
+ *     responses:
+ *       200:
+ *         description: An array of users
+ *         content:
+ *           application/json:
+ *             schema:
+ *               oneOf:
+ *                - $ref: '#/components/schemas/Users'
+ *       default:
+ *          description: unexpected error
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Error'
+ */
+router.get('/', [isLogged], exceptionsFilter(UserComponent.findAll));
 
 /**
  * Route serving a user
@@ -22,7 +48,7 @@ router.get('/', exceptionsFilter(UserComponent.findAll));
  * @param {string} path - Express path
  * @param {callback} middleware - Express middleware.
  */
-router.get('/:id', exceptionsFilter(UserComponent.findById));
+router.get('/:id', [isLogged], exceptionsFilter(UserComponent.findById));
 
 /**
  * Route serving a new user
@@ -32,7 +58,7 @@ router.get('/:id', exceptionsFilter(UserComponent.findById));
  * @param {string} path - Express path
  * @param {callback} middleware - Express middleware
  */
-router.post('/', exceptionsFilter(UserComponent.create));
+router.post('/', [isLogged], exceptionsFilter(UserComponent.create));
 
 /**
  * Route serving a new user
@@ -42,7 +68,7 @@ router.post('/', exceptionsFilter(UserComponent.create));
  * @param {string} path - Express path
  * @param {callback} middleware - Express middleware
  */
-router.put('/', exceptionsFilter(UserComponent.updateById));
+router.put('/', [isLogged], exceptionsFilter(UserComponent.updateById));
 
 /**
  * Route serving a new user
@@ -52,6 +78,6 @@ router.put('/', exceptionsFilter(UserComponent.updateById));
  * @param {string} path -Express path
  * @param {callback} middleware - Express middleware
  */
-router.delete('/', exceptionsFilter(UserComponent.deleteById));
+router.delete('/', [isLogged], exceptionsFilter(UserComponent.deleteById));
 
 module.exports = router;

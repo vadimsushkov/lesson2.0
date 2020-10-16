@@ -2,27 +2,6 @@ const jwt = require('jsonwebtoken');
 const AuthService = require('./service');
 const AuthValidation = require('./validation');
 
-/**
- *
- * @swagger
- * /signIn
- *  post:
- *      summary: sign in user
- *      requestBody:
- *          content:
- *              application/json:
- *                  schema:
- *                      properties:
- *                          email:
- *                              type: string
- *                              description: email address
- *      responses:
- *          201:
- *              description: user signed in
- *          422:
- *              description: user already exists
- */
-
 async function signIn(req, res) {
     const { value, error } = AuthValidation.signIn(req.body);
 
@@ -36,6 +15,15 @@ async function signIn(req, res) {
         AuthService.relationIdToRefreshToken,
     );
     return res.header('Authorization', accessToken).status(200).json({ data: { accessToken, refreshToken } });
+}
+
+async function currentUser(req, res) {
+    const authToken = req.header('authorization');
+    const token = authToken && authToken.split(' ')[1];
+    const user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+    if (!user) return res.status(404).json({ message: 'User is not found', statusCode: 404 });
+    return res.status(200).json({ message: 'Your current data', data: { email: user.email, id: user.id } });
 }
 
 async function refresh(req, res) {
@@ -96,4 +84,5 @@ module.exports = {
     signOut,
     signUp,
     signOutAll,
+    currentUser,
 };

@@ -20,13 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6101249e-7591-4a04-85d3-547816033850" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/swaggerDef.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Auth/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Auth/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Auth/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/User/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/User/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/router.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +90,8 @@
       <workItem from="1602747515927" duration="1792000" />
       <workItem from="1602749450228" duration="2471000" />
       <workItem from="1602754191339" duration="2317000" />
-      <workItem from="1602756635980" duration="16982000" />
+      <workItem from="1602756635980" duration="19023000" />
+      <workItem from="1602828039346" duration="7773000" />
     </task>
     <servers />
   </component>

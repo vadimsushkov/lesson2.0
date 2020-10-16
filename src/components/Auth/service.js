@@ -21,6 +21,11 @@ module.exports = {
         return UserModel.findOne({ email }).exec();
     },
 
+    async findUserByToken(accessToken) {
+        const userId = await redis.getAsync(accessToken);
+        return userId;
+    },
+
     async findRefreshTokenById(userId) {
         const RefreshToken = await redis.getAsync(userId);
 
@@ -41,7 +46,6 @@ module.exports = {
         const refreshToken = jwt.sign(newPayload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
 
         await method(payload.id, refreshToken);
-        console.log({ accessToken, refreshToken });
 
         return { accessToken, refreshToken };
     },

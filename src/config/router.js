@@ -1,22 +1,10 @@
+const swaggerUi = require('swagger-ui-express');
 const express = require('express');
 const http = require('http');
 const UserRouter = require('../components/User/router');
 const AuthRouter = require('../components/Auth/router');
-const swaggerUi = require('swagger-ui-express');
-const swaggerJSDoc = require('swagger-jsdoc');
 
-const options = {
-    definition: {
-        info: {
-            title: 'Lesson 2',
-            description: 'Swagger docs for API of lesson 2',
-            version: '1.0.0',
-        },
-    },
-    apis: ['../components/User/*.js'],
-};
-
-const swaggerSpec = swaggerJSDoc(options);
+const swaggerDoc = require('../../swagger.json');
 
 module.exports = {
     /**
@@ -38,7 +26,8 @@ module.exports = {
          */
         app.use('/v1/users', UserRouter);
         app.use('/v1/auth', AuthRouter);
-        app.use('/api-documentation', swaggerUi.serve, swaggerUi.setup(swaggerSpec, { explorer: true }));
+        app.use('/docs', swaggerUi.serve);
+        app.get('/docs', swaggerUi.setup(swaggerDoc));
 
         /**
          * @description No results returned mean the object is not found

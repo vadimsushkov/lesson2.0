@@ -8,16 +8,7 @@ const UserValidation = require('./validation');
  * @param {express.NextFunction} next
  * @returns {Promise < void >}
  */
-
-/**
- * @swagger
- * /findAll:
- *  get:
- *      responses:
- *          '200':
- *              description: fuck
- */
-async function findAll(req, res, next) {
+async function findAll(req, res) {
     const users = await UserService.findAll();
 
     return res.status(200).json({
@@ -35,7 +26,7 @@ async function findAll(req, res, next) {
  * @returns {Promise < void >}
  */
 
-async function findById(req, res, next) {
+async function findById(req, res) {
     const { value, error } = UserValidation.findById(req.params);
 
     if (error) {
@@ -65,7 +56,7 @@ async function findById(req, res, next) {
  * @param {express.NextFunction} next
  * @returns {Promise < void >}
  */
-async function create(req, res, next) {
+async function create(req, res) {
     const { value, error } = UserValidation.create(req.params);
     if (error) {
         throw error;
@@ -86,7 +77,7 @@ async function create(req, res, next) {
  * @param {express.NextFunction} next
  * @returns {Promise<void>}
  */
-async function updateById(req, res, next) {
+async function updateById(req, res) {
     const { value, error } = UserValidation.updateById(req.body);
     if (error) {
         throw error;
@@ -116,7 +107,7 @@ async function updateById(req, res, next) {
  * @param {express.NextFunction} next
  * @returns {Promise<void>}
  */
-async function deleteById(req, res, next) {
+async function deleteById(req, res) {
     const { value, error } = UserValidation.deleteById(req.body);
     if (error) {
         throw error;
