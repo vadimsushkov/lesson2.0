@@ -11,5 +11,5 @@ module.exports = {
     servers: [
         { url: 'http://localhost:3000' },
     ],
-    apis: [path.join(__dirname, './src/**/**/*.js')],
+    apis: [path.join(__dirname, './src/**/*.js')],
 };

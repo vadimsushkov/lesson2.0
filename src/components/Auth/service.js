@@ -21,11 +21,6 @@ module.exports = {
         return UserModel.findOne({ email }).exec();
     },
 
-    async findUserByToken(accessToken) {
-        const userId = await redis.getAsync(accessToken);
-        return userId;
-    },
-
     async findRefreshTokenById(userId) {
         const RefreshToken = await redis.getAsync(userId);
 
